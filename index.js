@@ -1,8 +1,5 @@
 
 const { Telegraf } = require('telegraf');
-const express = require('express');
-const app = express();
-const port = 3000;
 const { askGptAi } = require('sensui-package');
 const bot = new Telegraf('6448227146:AAENITUSXo6dZxa2MCfDjXtLJXqm4Ig1mAs');
 const { fetchBardAiResponse } = require('sensui-package');
@@ -68,12 +65,6 @@ bot.on("message", async (ctx) => {
   }
   }
 });
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
 console.log("Bot is working.")
 bot.launch();
