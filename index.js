@@ -24,7 +24,7 @@ bot.action('gptai', (ctx) => {
   try {
     ctx.deleteMessage(ctx.chat.id, startid)
   } catch (error) {
-    return
+    
 }
   gptmodel = "gptai"
   const chatId = ctx.chat.id
@@ -39,7 +39,7 @@ bot.action('bard', (ctx) => {
   try {
     ctx.deleteMessage(ctx.chat.id, startid)
   } catch (error) {
-    return
+    
 }
  
   gptmodel = "bard"
