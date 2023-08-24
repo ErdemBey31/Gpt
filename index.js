@@ -64,7 +64,12 @@ bot.on("message", async (ctx) => {
   if (gptmodel == "gptai") {
     try {
       const response = await askGptAi(ctx.message.text);
-      ctx.replyWithHTML(`<b>RESPONSE FROM GPTAI</b>: <code> ${response} </code>`);
+      try {
+        ctx.replyWithHTML(`<b>RESPONSE FROM GPTAI</b>: <code> ${response} </code>`);
+      } catch (error) {
+        ctx.reply(error)
+      }
+      
     } catch (error) {
       ctx.replyWithHTML(`<b>Error:</b> <code> ${error.message} </code>`);
 }
@@ -72,7 +77,11 @@ bot.on("message", async (ctx) => {
   if (gptmodel == "bard") {
     try {
       const response = await fetchBardAiResponse(ctx.message.text);
-      ctx.replyWithHTML(`<b>RESPONSE:</b> <code> ${response} </code>`);
+      try {
+        ctx.replyWithHTML(`<b>RESPONSE:</b> <code> ${response} </code>`);
+      } catch (error) {
+        ctx.reply(error)
+      }
   } catch (error) {
       ctx.reply(error.message);
   }
