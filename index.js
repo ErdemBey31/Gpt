@@ -6,6 +6,7 @@ const { fetchBardAiResponse } = require('sensui-package');
 let gptmodel = "nohave"
 
 bot.start((ctx) => {
+  let startid = ctx.message.message_id
   if (gptmodel == "nohave") {
     ctx.replyWithMarkdown("Please select your GPT model.", {
       reply_markup: {
@@ -20,6 +21,11 @@ bot.start((ctx) => {
   }
 });
 bot.action('gptai', (ctx) => {
+  try {
+    ctx.deleteMessage(ctx.chat.id, startid)
+  } catch (error) {
+    return
+}
   gptmodel = "gptai"
   const chatId = ctx.chat.id
   try { 
@@ -30,6 +36,12 @@ bot.action('gptai', (ctx) => {
   }
 })
 bot.action('bard', (ctx) => {
+  try {
+    ctx.deleteMessage(ctx.chat.id, startid)
+  } catch (error) {
+    return
+}
+ 
   gptmodel = "bard"
   const chatId = ctx.chat.id
   try { 
@@ -41,11 +53,12 @@ bot.action('bard', (ctx) => {
 })
 bot.command("change", (ctx) => {
   gptmodel = "nohave"
-  ctx.reply("Revoked successfully, type /start to change")
+  ctx.replyWithMarkdown("*Revoked successfully*, _type /start to change_")
 })
 bot.on("message", async (ctx) => {
+  
   if (gptmodel == "nohave") {
-    ctx.replyWithMarkdown("First you need to select the gpt model.")
+    ctx.replyWithMarkdown("*First you need to select the gpt model.*")
     return;
    }
   if (gptmodel == "gptai") {
@@ -53,7 +66,7 @@ bot.on("message", async (ctx) => {
       const response = await askGptAi(ctx.message.text);
       ctx.replyWithHTML(`<b>RESPONSE FROM GPTAI</b>: <code> ${response} </code>`);
     } catch (error) {
-      ctx.reply(`Error: ${error.message}`);
+      ctx.replyWithHTML(`<b>Error:</b> <code> ${error.message} </code>`);
 }
 }
   if (gptmodel == "bard") {
