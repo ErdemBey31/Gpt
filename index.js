@@ -29,7 +29,7 @@ bot.action('gptai', (ctx) => {
   gptmodel = "gptai"
   const chatId = ctx.chat.id
   try { 
-    ctx.deleteMessage(chatId, ctx.message.message_id)
+    ctx.deleteMessage(chatId, ctx.update.message.message_id)
     ctx.replyWithMarkdown("*Selected model: gptai. To change write /change*")
   } catch (error) {
     ctx.replyWithMarkdown("*Selected model: gptai. To change write /change*")
@@ -45,7 +45,7 @@ bot.action('bard', (ctx) => {
   gptmodel = "bard"
   const chatId = ctx.chat.id
   try { 
-    ctx.deleteMessage(chatId, ctx.message.message_id)
+    ctx.deleteMessage(chatId, ctx.update.message.message_id)
     ctx.replyWithMarkdown("*Selected model: bard ai To change write /change*")
   } catch (error) {
     ctx.replyWithMarkdown("*Selected model: bard ai To change write /change*")
