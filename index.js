@@ -21,35 +21,20 @@ bot.start((ctx) => {
   }
 });
 bot.action('gptai', (ctx) => {
-  try {
-    ctx.deleteMessage(ctx.chat.id, startid)
-  } catch (error) {
-    
-}
+  
   gptmodel = "gptai"
   const chatId = ctx.chat.id
-  try { 
-    ctx.deleteMessage(chatId, ctx.update.message.message_id)
-    ctx.replyWithMarkdown("*Selected model: gptai. To change write /change*")
-  } catch (error) {
-    ctx.replyWithMarkdown("*Selected model: gptai. To change write /change*")
-  }
+  
+  ctx.editMessageText("*Selected model: gptai. To change write /change*")
+  
 })
 bot.action('bard', (ctx) => {
-  try {
-    ctx.deleteMessage(ctx.chat.id, startid)
-  } catch (error) {
-    
-}
  
   gptmodel = "bard"
   const chatId = ctx.chat.id
-  try { 
-    ctx.deleteMessage(chatId, ctx.update.message.message_id)
-    ctx.replyWithMarkdown("*Selected model: bard ai To change write /change*")
-  } catch (error) {
-    ctx.replyWithMarkdown("*Selected model: bard ai To change write /change*")
-  }
+  
+  ctx.editMessageText("*Selected model: bard ai To change write /change*")
+  
 })
 bot.command("change", (ctx) => {
   gptmodel = "nohave"
