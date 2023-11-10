@@ -1,7 +1,7 @@
 
 const { Telegraf } = require('telegraf');
 const { askGptAi } = require('sensui-package');
-const bot = new Telegraf('6448227146:AAENITUSXo6dZxa2MCfDjXtLJXqm4Ig1mAs');
+const bot = new Telegraf('6405937908:AAGdkiPK0D8LrtazWNVTrNHRvFCaZD2V_rE');
 const { fetchBardAiResponse } = require('sensui-package');
 let gptmodel = "nohave"
 
